@@ -9,57 +9,72 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-around',
+    marginHorizontal: 16,
+
   },
-  image: {
-    width: 220,
-    height: 220,
-  },
+  title: {
+    fontSize: 30,
+    fontFamily: 'Roboto-Bold',
+    color: '#424242',
+    textAlign: 'center',
+    backgroundColor: 'transparent',
+    marginBottom: 0,
+  }, 
   text: {
     color: '#7b7b7b',
     backgroundColor: 'transparent',
-    textAlign: 'center',
-    paddingHorizontal: 16,
-    
+    textAlign: 'justify',
+    fontSize: 20,
+    fontFamily: 'Roboto-Light',
+    marginHorizontal: 14,
+    marginBottom: 32
   },
-  title: {
-    fontSize: 22,
-    color: '#424242',
-    backgroundColor: 'transparent',
-    textAlign: 'center',
-    marginBottom: 16,
-    
-
-  }
+  image: {
+    width: 160,
+    height: 160,
+  },
+  corPonto: {
+    backgroundColor: '#9f9f9f'
+  },
+  corPontoAtivo: {
+    backgroundColor: '#575757'
+  },
+  estiloBotao: {
+    backgroundColor: '#cc2826',
+  }, 
+  estiloTextoBotao: {
+    fontFamily: 'Roboto'
+  }, 
 });
 
 const slides = [
   {
-    key: 'somethun',
-    title: 'Title 1',
+    key: 'Alertas',
+    title: 'Receba alertas',
     titleStyle: styles.title,
-    text: 'Description.\nSay something cool',
+    text: 'Cadastre seu telefone e receba os alertas da defesa civil. Cadastre seu telefone e receba os alertas da defesa civil.',
     textStyle: styles.text,
-    image: require('./assets/1.png'),
+    image: require('./assets/imgs/alerta.png'),
     imageStyle: styles.image,
     backgroundColor: '#f6f6f6',
   },
   {
-    key: 'somethun',
-    title: 'Title 1',
+    key: 'Cadastro',
+    title: 'Cadastre seu imóvel',
     titleStyle: styles.title,
-    text: 'Description.\nSay something cool',
+    text: 'Cadastre seu telefone e receba os alertas da defesa civil.Cadastre seu telefone e receba os alertas da defesa civil.',
     textStyle: styles.text,
-    image: require('./assets/2.png'),
+    image: require('./assets/imgs/casa.png'),
     imageStyle: styles.image,
     backgroundColor: '#f6f6f6',
   },
   {
-    key: 'somethun',
-    title: 'Title 1',
+    key: 'Cadastro2',
+    title: 'Cadastre seu imóvel',
     titleStyle: styles.title,
-    text: 'Description.\nSay something cool',
+    text: 'Cadastre seu telefone e receba os alertas da defesa civil. Cadastre seu telefone e receba os alertas da defesa civil.',
     textStyle: styles.text,
-    image: require('./assets/3.png'),
+    image: require('./assets/imgs/alerta.png'),
     imageStyle: styles.image,
     backgroundColor: '#f6f6f6',
   }
@@ -67,64 +82,35 @@ const slides = [
 
 
 export default class Intro extends React.Component {
-  _renderItem = props => (
-    <LinearGradient
-    style={[styles.mainContent, {
-      paddingTop: props.topSpacer,
-      paddingBottom: props.bottomSpacer,
-      width: props.width,
-      height: props.height,
-    }]}
-    colors={props.colors}
-    start={{x: 0, y: .1}} end={{x: .1, y: 1}}
-    >
-      {/* <Ionicons style={{ backgroundColor: 'transparent' }} name={props.icon} size={150} color="white" /> */}
-      <View>
-        <Text style={styles.title}>{props.title}</Text>
-        <Text style={styles.text}>{props.text}</Text>
-      </View>
-    </LinearGradient>
-  );
-  
-  render() {
-    return (
-      <AppIntroSlider
-      slides={slides}
-      // renderItem={this._renderItem}
-      bottomButton
-      skipLabel='Pular'
-      doneLabel='Pronto' 
-      nextLabel='Próximo' 
-      prevLabel='Anterior'
-      />
-      );
+
+  constructor(props){
+    super(props);
+    this.state = {
+      showRealApp: false
     }
   }
+  _onDone = () => {
+    this.setState({ showRealApp: true });
+  }
 
-// export default class Intro extends React.Component {
-//     constructor(props){
-//         super(props);
-//         this.state = {
-//           showRealApp: false
-//         }
-//     }
-//   _onDone = () => {
-//     // User finished the introduction. Show real app through
-//     // navigation or simply by controlling state
-//     this.setState({ showRealApp: true });
-//   }
-//   render() {
-//     if (this.state.showRealApp) {
-//       return <App />;
-//     } else {
-//       return <AppIntroSlider 
-//       slides={slides} 
-//       onDone={this._onDone} 
-//       skipLabel='Pular'
-//       doneLabel='Pronto' 
-//       nextLabel='Próximo' 
-//       prevLabel='Anterior'
-//       />;
-//     }
-//   }
-// }
+  render() {
+      if (this.state.showRealApp) {
+        return <App />;
+    } else {
+        return <AppIntroSlider 
+                  slides={slides}
+                  bottomButton
+                  buttonStyle={ styles.estiloBotao }
+                  buttonTextStyle={ styles.estiloTextoBotao }
+                  skipLabel='Pular'
+                  doneLabel='Pronto' 
+                  nextLabel='Próximo' 
+                  prevLabel='Anterior'
+                  dotStyle= { styles.corPonto }
+                  activeDotStyle= { styles.corPontoAtivo }
+                  onDone={this._onDone} 
+
+                />;
+    }
+  }
+}
