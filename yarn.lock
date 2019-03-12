@@ -2674,13 +2674,13 @@ jest-watcher@^24.0.0:
     jest-util "^24.0.0"
     string-length "^2.0.0"
 
-jest-worker@24.0.0-alpha.6, jest-worker@^24.0.0-alpha.6:
+jest-worker@24.0.0-alpha.6:
   version "24.0.0-alpha.6"
   resolved "https://registry.yarnpkg.com/jest-worker/-/jest-worker-24.0.0-alpha.6.tgz#463681b92c117c57107135c14b9b9d6cd51d80ce"
   dependencies:
     merge-stream "^1.0.1"
 
-jest-worker@^24.0.0:
+jest-worker@^24.0.0, jest-worker@^24.0.0-alpha.6:
   version "24.0.0"
   resolved "https://registry.yarnpkg.com/jest-worker/-/jest-worker-24.0.0.tgz#3d3483b077bf04f412f47654a27bba7e947f8b6d"
   dependencies:
@@ -3919,6 +3919,10 @@ react-devtools-core@^3.4.2:
 react-is@^16.6.3, react-is@^16.8.1:
   version "16.8.3"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.3.tgz#4ad8b029c2a718fc0cfc746c8d4e1b7221e5387d"
+
+react-native-app-intro-slider@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-app-intro-slider/-/react-native-app-intro-slider-1.0.1.tgz#712bf3dc1d66b3432bf4092971db4dfc01b916bd"
 
 react-native@0.58.5:
   version "0.58.5"
